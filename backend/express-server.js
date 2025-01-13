@@ -1,7 +1,7 @@
 const express = require("express");
 const chats = require("./data");
 const app = express();
-const port = 3000;
+const port = 4000;
 // const www = process.env.WWW || './';
 // app.use(express.static(www));
 // console.log(`serving ${www}`);
@@ -19,8 +19,9 @@ app.get("/api/chat", (req, res) => {
 
 app.get("/api/chat/:id", (req, res) => {
   console.log(req.params.id);
+  console.log("====================================");
   const singleChatId = chats.find((c) => c._id === req.params.id);
-  req.send(singleChatId);
+  res.send(singleChatId);
 });
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
